@@ -2,9 +2,11 @@ package application;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
@@ -14,12 +16,20 @@ public class Program {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
+		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
 		System.out.println("=== seller findById ===");
 		Seller seller = sellerDao.findById(3);
 		
 		System.out.println(seller);
+		Department dept = new Department(2,null);
+		System.out.println("=== seller findByDepartmentId ===");
+		List<Seller> seller2 = sellerDao.findByDepartment(dept);
+		
+		for(Seller obj: seller2) {
+			System.out.println(obj);
+		}
 
 	}
 
